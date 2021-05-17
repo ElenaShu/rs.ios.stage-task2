@@ -16,9 +16,10 @@
     
     [numberMutableArr sortUsingSelector:@selector(compare:)];
     [stringMutableArr sortUsingSelector:@selector(compare:)];
-    if ([numberMutableArr count] != 0 && [stringMutableArr count] != 0)
-        return [[NSArray alloc] initWithObjects: numberMutableArr, stringMutableArr, nil];
-    else if ([numberMutableArr count] == 0)
+    if ([numberMutableArr count] != 0 && [stringMutableArr count] != 0){
+        NSArray * stringArr = [[stringMutableArr reverseObjectEnumerator] allObjects];
+        return [[NSArray alloc] initWithObjects: numberMutableArr, stringArr, nil];
+    } else if ([numberMutableArr count] == 0)
         return [[NSArray alloc] initWithArray: stringMutableArr copyItems: true];
     else {
         return [[NSArray alloc] initWithArray: numberMutableArr copyItems: true];
